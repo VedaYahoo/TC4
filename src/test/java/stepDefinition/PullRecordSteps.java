@@ -12,7 +12,7 @@ public class PullRecordSteps {
 
     @Given("Open browser and launch page")
     public void open_browser_and_launch_page() {
-//        System.out.println("\nOpen browser and launch page");
+        System.out.println("\nOpen browser and launch page");
 //        /Users/davebrextolentino/Downloads/chromedriver-mac-x64
 //        /Users/davebrextolentino/Downloads/chromedriver_mac_arm64OLD
         System.setProperty("webdriver.chrome.driver", "/Users/davebrextolentino/Downloads/chromedriver_mac_arm64OLD/chromedriver.exe");
