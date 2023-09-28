@@ -5,6 +5,8 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import objectrepository.AweUiObj;
+import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -19,29 +21,21 @@ public class PullRecordSteps extends BaseUtil {
 
     @Given("Open browser and launch page")
     public void open_browser_and_launch_page() {
+        boolean status = false;
         System.out.println("\nOpen browser and launch page");
         System.setProperty("webdriver.chrome.driver", "/Users/davebrextolentino/Downloads/chromedriver_mac_arm64/chromedriver");
         driver = new ChromeDriver();
         driver.get("https://aweui.aspnetawesome.com/Grid/Filtering#Grid-Filter-Row");
-        /* Safari
-        try {
-            WebDriver driver = new SafariDriver();
-            driver.manage().window().maximize();
-            driver.get("https://aweui.aspnetawesome.com/Grid/Filtering#Grid-Filter-Row");
-            wait(5000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-         */
 
+        status = driver.findElement(By.xpath("//*[@id=\"maincont\"]/h1")).isDisplayed();    //GridFiltering header
+        Assert.assertEquals(true, status);
     }
 
     @When("Enter value in text field")
     public void enter_value_in_text_field() {
         System.out.println("\nEnter value in text field");
 
-        //text field
-        enterText(AweObjects.txtSearchGridFilter, "Robert");
+        enterText(AweObjects.txtSearchGridFilter, "Robert");    //Search text field
     }
 
     @Then("Pull records from input")
